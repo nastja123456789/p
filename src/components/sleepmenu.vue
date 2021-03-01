@@ -72,7 +72,7 @@
     --><span v-if="twelveHour" class="clock__ampm">{{ amPm }}</span>
       </time>
 <!--      <div class="free-class-title">Свободные аудитории на {{this.i}}ю пару</div>-->
-      <div v-if="lessonIndex != -1">У вас пара под номером {{lessonIndex}}</div>
+      <div v-if="lessonIndex != null">У вас пара под номером {{lessonIndex}}</div>
       <div v-else>Сейчас неучебное время, проверьте свою пару в промежутке с 9:00 до 21:00</div>
       <div v-if="floors.length > 0" >
         <div class="free-classes" v-for="floor in floors" :key="floor.floor">
@@ -135,7 +135,7 @@
               i:1,
               audit: [],
               map: {},
-              lessonIndex:-1,
+              lessonIndex:null,
               rooms: {},
               floors: [],
               capacities:[],
