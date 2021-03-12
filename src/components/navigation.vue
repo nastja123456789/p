@@ -2513,6 +2513,7 @@ name: "navigation",
     "6a": false,
     "7a": false,
     "8a": false,
+<<<<<<< HEAD
     "9a": false},
     cabFloorMatch : {
     "1":  ["101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "121", "123", "124", "125", "134"],
@@ -2533,6 +2534,12 @@ name: "navigation",
   };
   },
   methods: {
+=======
+    "9a": false}
+  };
+  },
+methods: {
+>>>>>>> 507043d9a626bd7369b996a98ec13f92afe5c43b
   showSelect(id) {
     for (var item in this.showState) {
       if (item === id) {
@@ -2542,6 +2549,7 @@ name: "navigation",
      
     }
     this.showState[id] = !this.showState[id]
+<<<<<<< HEAD
   },
   roomNumValidate(room) {
     
@@ -2567,6 +2575,12 @@ watch: {
     console.log(this.homeDot,this.destDot)
 
   }
+=======
+    console.log(this.showState[id])
+    
+  }
+  
+>>>>>>> 507043d9a626bd7369b996a98ec13f92afe5c43b
 }
 
 }

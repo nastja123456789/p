@@ -2,7 +2,7 @@
   <div class="slide" id="slide2" data-anchor="Аудитории">
     <div class="btn-toolbar mb-3" role="toolbar" aria-label="Toolbar with button groups">
 						<span class="col-3" id="amount" style="line-height: 38px; font-size: 17pt;">Интервал:
-							<span id="lesson-num"></span>
+              <span id="lesson-num"></span>
 							<span id="lesson-count"></span>
 							<span id="lesson-time"></span>
 							<span id="lesson-load" style="display: none;"><i class='fa fa-spinner fa-pulse fa-fw'></i></span>
@@ -11,8 +11,17 @@
         <div id="slider-range"></div>
       </div>
       <div class="input-group input-date m-auto">
-        <input id="classrooms-datepicker" class="form-control form-control-lg">
-<!--        <button v-on:click="clicc"></button>-->
+        <div class="range-slider">
+        <input @change="onChange" type="range" min="1" max="7" step="1"
+               :value="this.i" @input="e => this.i = e.target.value "
+        />
+
+<div>Свободные аудитории на {{this.i}}ю пару</div>
+
+</div>
+        <input @change="onChange" type="number" :value="this.i" @input="e => this.i = e.target.value" id="classrooms-datepicker" class="form-control form-control-lg">
+
+
       </div>
 
     </div>
@@ -33,15 +42,21 @@
 
 <script>
 
+
 import axios from "axios";
+
 export default {
   name: 'freeaudit',
   data() {
     return {
+      i: 1,
+      a:1,
+      b:8,
+      f: '',
       audit: [],
-      map:{},
-      rooms:[],
-      floors:[],
+      map: {},
+      rooms: [],
+      floors: [],
       lessonTime: {
         1: {
           "begin": "09:00",
@@ -78,55 +93,97 @@ export default {
       },
     }
   },
-   methods: {
+  methods: {
 
-     // clicc: function () {
-     //   console.log(this.audit)
-     //    //this.rooms = {"1": [], "2": [], "3":[], "4":[], "5":[],"6":[],"7":[],"8":[],"9":[]}
-     //     for (let key in this.audit) {
-     //       this.rooms.set(this.i.floor, this.i.number);
-     //     }
-     //   console.log(this.rooms);
-     //
-     //   //   let list=("<ul class='free-classes' id='free-classes-sm'></ul>")
-     //   //   let j=1
-     //   //   for (let i=1;i<=9;i++) {
-     //   //      let floor,par;
-     //   //     if (this.audit[j].floor == i) {
-     //   //     floor = ("<li class='floor'></li>");
-     //   //       floor.append(`<h6>{{i.floor}}</h6>`);
-     //   //     par=("<p></p>");
-     //   //     while (j < this.audit.rooms.length && this.audit.floor ==i) {
-     //   //       par.append(`{{this.audit.rooms[j].number}}<small>({{this.audit.rooms[j].capacity}})</small>`);
-     //   //       j++;
-     //   //     }
-     //   //     floor.append(par);
-     //   //     list.append(floor);
-     //   //     }
-     //   //   }
-     //   // }
-     // }
-   },
+    onChange: function() {
+      axios
+          .get('https://api.hseapp.ru/gateway/ruz/rooms/2211?classes=' + this.i)
+          .then(response => {
+            this.floors = []
+            response.data.rooms.forEach(room => {
+              if (room.floor) {
+                let index = this.floors.map(floor => floor.floor).indexOf(room.floor)
+                if (index == -1) {
+                  this.floors.push({
+                    floor: room.floor,
+                    rooms: [room.number]
+                  })
+                } else {
+                  this.floors[index].rooms.push(room.number)
+                }
+              }
+            })
+          });
+      // if (this.i > this.a) {
+      //   this.a=this.i
+      //   this.f += this.i
+      //   axios
+      //       .get('https://api.hseapp.ru/gateway/ruz/rooms/2211?classes=' + this.f)
+      //       .then(response => {
+      //         this.floors = []
+      //         response.data.rooms.forEach(room => {
+      //           if (room.floor) {
+      //             let index = this.floors.map(floor => floor.floor).indexOf(room.floor)
+      //             if (index == -1) {
+      //               this.floors.push({
+      //                 floor: room.floor,
+      //                 rooms: [room.number]
+      //               })
+      //             } else {
+      //               this.floors[index].rooms.push(room.number)
+      //             }
+      //           }
+      //         })
+      //       });
+      // }
+      // if (this.i<this.a) {
+      //   this.f-=this.a
+      //   this.a=this.i
+      //   axios
+      //       .get('https://api.hseapp.ru/gateway/ruz/rooms/2211?classes=' + this.f)
+      //       .then(response => {
+      //         this.floors = []
+      //         response.data.rooms.forEach(room => {
+      //           if (room.floor) {
+      //             let index = this.floors.map(floor => floor.floor).indexOf(room.floor)
+      //             if (index == -1) {
+      //               this.floors.push({
+      //                 floor: room.floor,
+      //                 rooms: [room.number]
+      //               })
+      //             } else {
+      //               this.floors[index].rooms.push(room.number)
+      //             }
+      //           }
+      //         })
+      //       });
+      // }
+    }
+
+  },
 
   mounted() {
+    if (!this.f) {
+      this.f += this.i
+      axios
 
-    axios
-           .get('https://api.hseapp.ru/gateway/ruz/rooms/2211?classes=1')
-           .then(response => {
-             response.data.rooms.forEach(room =>{
-               if (room.floor) {
-                 let index = this.floors.map(floor => floor.floor).indexOf(room.floor)
-                 if (index == -1) {
-                   this.floors.push({
-                     floor: room.floor,
-                     rooms: [room.number]
-                   })
-                 } else {
-                   this.floors[index].rooms.push(room.number)
-                 }
-               }
-             })
-           });
+          .get('https://api.hseapp.ru/gateway/ruz/rooms/2211?classes=' + this.i)
+          .then(response => {
+            response.data.rooms.forEach(room => {
+              if (room.floor) {
+                let index = this.floors.map(floor => floor.floor).indexOf(room.floor)
+                if (index == -1) {
+                  this.floors.push({
+                    floor: room.floor,
+                    rooms: [room.number]
+                  })
+                } else {
+                  this.floors[index].rooms.push(room.number)
+                }
+              }
+            })
+          });
+    }
   }
 }
 </script>

@@ -14,7 +14,7 @@
 
 <script>
 import 'bootstrap/dist/css/bootstrap.min.css';
-import _ from 'lodash';
+
 
 export default {
   props: ['selfValue'],
@@ -27,12 +27,10 @@ export default {
     };
   },
   methods: {
-    shuffle() {
-      this.keys = _.shuffle(this.keys);
-    },
+    
     press(key) {
       this.value = `${this.value}${key}`;
-      this.shuffle();
+      
     },
     clear(type) {
       if (type === 'all') this.value = '';
@@ -48,7 +46,7 @@ export default {
     },
   },
   created() {
-    this.shuffle();
+   
   },
 };
 </script>
