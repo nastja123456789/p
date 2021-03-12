@@ -20,34 +20,34 @@
       <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
         <div class="btn-group-vertical btn-group-toggle mr-4" role="group" aria-label="First group">
           <button v-on:click="move=!move" class="btn btn-secondary floor-num btn-lg "></button>
-          <button v-on:click="show9a =!show9a" value="9a" class="btn btn-secondary floor-num btn-lg ">9a</button>
-          <button v-on:click="show8a =!show8a" value="8a" class="btn btn-secondary floor-num btn-lg">8a</button>
-          <button v-on:click="show7a=!show7a" value="7a" class="btn btn-secondary floor-num btn-lg">7a</button>
+          <button v-on:click="showSelect('9a')" value="9a" class="btn btn-secondary floor-num btn-lg ">9a</button>
+          <button v-on:click="showSelect('8a')" value="8a" class="btn btn-secondary floor-num btn-lg">8a</button>
+          <button v-on:click="showSelect('7a')" value="7a" class="btn btn-secondary floor-num btn-lg">7a</button>
           <div class="btn-group" role="group">
 
-          <button v-on:click="show6 =!show6" value="6" class="btn btn-secondary floor-num btn-lg">6</button>
-          <button v-on:click="show6a =!show6a" value="6a" class="btn btn-secondary floor-num btn-lg">6a</button>
+          <button v-on:click="showSelect('6')" value="6" class="btn btn-secondary floor-num btn-lg">6</button>
+          <button v-on:click="showSelect('6a')" value="6a" class="btn btn-secondary floor-num btn-lg">6a</button>
 
         </div>
         <div class="btn-group" role="group">
-          <button v-on:click="show5 =!show5" value="5" class="btn btn-secondary floor-num btn-lg">5</button>
-          <button v-on:click="show5a =!show5a" value="5a" class="btn btn-secondary floor-num btn-lg">5a</button>
+          <button v-on:click="showSelect('5')" value="5" class="btn btn-secondary floor-num btn-lg">5</button>
+          <button v-on:click="showSelect('5a')" value="5a" class="btn btn-secondary floor-num btn-lg">5a</button>
         </div>
 
         <div class="btn-group" role="group">
-          <button v-on:click="show4 =!show4" value="4" class="btn btn-secondary floor-num btn-lg">4</button>
-          <button v-on:click="show4a =!show4a" value="4a" class="btn btn-secondary floor-num btn-lg">4a</button>
+          <button v-on:click="showSelect('4')" value="4" class="btn btn-secondary floor-num btn-lg">4</button>
+          <button v-on:click="showSelect('4a')" value="4a" class="btn btn-secondary floor-num btn-lg">4a</button>
         </div>
         <div class="btn-group" role="group">
-          <button v-on:click="show3 =!show3" value="3" class="btn btn-secondary floor-num btn-lg">3</button>
-          <button v-on:click="show3a =!show3a" value="3a" class="btn btn-secondary floor-num btn-lg">3a</button>
+          <button v-on:click="showSelect('3')" value="3" class="btn btn-secondary floor-num btn-lg">3</button>
+          <button v-on:click="showSelect('3a')" value="3a" class="btn btn-secondary floor-num btn-lg">3a</button>
         </div>
         <div class="btn-group" role="group">
-          <button v-on:click="show2 =!show2" value="2" class="btn btn-secondary floor-num btn-lg">2</button>
-          <button v-on:click="show2a =!show2a" value="2a" class="btn btn-secondary floor-num btn-lg">2a</button>
+          <button v-on:click="showSelect('2')" value="2" class="btn btn-secondary floor-num btn-lg">2</button>
+          <button v-on:click="showSelect('2a')" value="2a" class="btn btn-secondary floor-num btn-lg">2a</button>
         </div>
-        <button v-on:click="show1 =!show1" value="1" class="btn btn-secondary floor-num btn-lg">1</button>
-        <button v-on:click="show0 =!show0" value="0" class="btn btn-secondary floor-num btn-lg">0</button>
+        <button v-on:click="showSelect('1')" value="1" class="btn btn-secondary floor-num btn-lg">1</button>
+        <button v-on:click="showSelect('0')" value="0" class="btn btn-secondary floor-num btn-lg">0</button>
       </div>
 
     </div>
@@ -61,8 +61,10 @@
 
 <div class="floor-change">
     <div id="news-slider">
+      <PathFinder v-bind:homeDot="homeDot"  v-bind:destDot="destDot"> </PathFinder>
+      <p>{{value}}</p>
 
-      <svg v-if="show0" v-on:dbclick="remove" xmlns:dc="http://purl.org/dc/elements/1.1/"
+      <svg v-if="showState['0']"  xmlns:dc="http://purl.org/dc/elements/1.1/"
            xmlns:cc="http://creativecommons.org/ns#"
            xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
            xmlns:svg="http://www.w3.org/2000/svg"
@@ -849,7 +851,7 @@
         <path id="here" d="m -14.471012,1408.2702 a 27.066928,27.066928 0 0 0 -12.96905,13.1445 31.958542,31.958542 0 0 0 2.88479,33.263 l 24.90951006,35.7465 24.88462994,-35.7465 a 30.930049,30.930049 0 0 0 6.14586,-18.6885 c 0,-21.9748 -22.5767696,-38.5307 -45.85574,-27.719 z m 15.25172006,38.1294 A 11.313424,11.313424 0 1 1 12.069098,1435.0861 11.313424,11.313424 0 0 1 0.78070806,1446.3996 Z" style="fill:#ffa500;stroke-width:0.91964149"/>
       </svg>
 
-      <svg v-if="show1" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="2336" height="1651" viewBox="0 0 2336 1651">
+      <svg v-if="showState['1']" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="2336" height="1651" viewBox="0 0 2336 1651">
         <metadata id="metadata8">
 
         </metadata>
@@ -1077,7 +1079,7 @@
             inkscape:connector-curvature="0"
             style="fill:#ffa500" />
       </svg>
-      <svg v-if="show2" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg68" width="1966" height="635" viewBox="0 0 1966 635">
+      <svg v-if="showState['2']" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg68" width="1966" height="635" viewBox="0 0 1966 635">
         <defs id="defs154"/>
         <metadata id="metadata74">
 
@@ -1243,7 +1245,7 @@
         <circle class="dot" id="dot2-7-4" cx="1357.0212" cy="274.00089" r="10"/>
         <path id="here" d="m -14.170741,546.96015 a 29.432041,29.432041 0 0 0 -14.10229,14.29322 34.751085,34.751085 0 0 0 3.13688,36.1695 L 1.9500493,636.2928 29.008989,597.42287 a 33.632722,33.632722 0 0 0 6.6829,-20.32148 c 0,-23.89478 -24.54944,-41.8977 -49.86263,-30.14124 z M 2.4137593,588.4214 A 12.301993,12.301993 0 1 1 14.688469,576.11941 12.301993,12.301993 0 0 1 2.4137593,588.4214 Z" style="fill:#ffa500"/>
       </svg>
-      <svg v-if="show2a" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg68" width="583" height="538" viewBox="0 0 583 538">
+      <svg v-if="showState['2a']" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg68" width="583" height="538" viewBox="0 0 583 538">
         <metadata id="metadata74">
 
         </metadata>
@@ -1317,7 +1319,7 @@
         <circle id="dot2a-2-2" cx="468.93188" cy="242.06679" r="10" class="dot"/>
         <circle id="dot2a-2-3" cx="483.98215" cy="306.30585" r="10" class="dot"/>
       </svg>
-      <svg v-if="show3" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="1966" height="635" viewBox="0 0 1966 635">
+      <svg v-if="showState['3']" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="1966" height="635" viewBox="0 0 1966 635">
         <metadata id="metadata8">
 
         </metadata>
@@ -1478,7 +1480,7 @@
         <circle class="dot" id="dot3-14-2" cx="899.72705" cy="289.45627" r="10"/>
         <circle class="dot" id="dot3-1-2" cx="1792.5533" cy="394.49841" r="10"/>
       </svg>
-      <svg v-if="show3a" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="582.99988" height="563.92383" viewBox="0 0 582.99988 563.92383">
+      <svg v-if="showState['3a']" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="582.99988" height="563.92383" viewBox="0 0 582.99988 563.92383">
         <metadata id="metadata8">
 
         </metadata>
@@ -1571,7 +1573,7 @@
         <circle class="dot" id="dot3a-2-2" cx="480.5" cy="265.42383" r="10"/>
         <circle class="dot" id="dot3a-2-3" cx="484" cy="324.92383" r="10"/>
       </svg>
-      <svg v-if="show4" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="1966" height="635" viewBox="0 0 1966 635" enable-background="new">
+      <svg v-if="showState['4']" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="1966" height="635" viewBox="0 0 1966 635" enable-background="new">
         <metadata id="metadata8">
 
         </metadata>
@@ -1735,7 +1737,7 @@
           <text xml:space="preserve" x="1795.9995" y="520" id="text250-6-6-1-5-9-2-92" class="cab-num"><tspan id="tspan248-3-2-2-7-9-1-4" x="1795.9995" y="520">413</tspan></text>
         </g>
       </svg>
-      <svg v-if="show4a" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="582.99988" height="563.92389" viewBox="0 0 582.99988 563.92389">
+      <svg v-if="showState['4a']" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="582.99988" height="563.92389" viewBox="0 0 582.99988 563.92389">
         <metadata id="metadata8">
 
         </metadata>
@@ -1824,7 +1826,7 @@
         <circle class="dot" id="dot4a-2-3" cx="491.43921" cy="315.02231" r="10"/>
       </svg>
 
-      <svg v-if="show5" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="1966" height="635" viewBox="0 0 1966 635">
+      <svg v-if="showState['5']" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="1966" height="635" viewBox="0 0 1966 635">
         <metadata id="metadata8">
 
         </metadata>
@@ -1950,7 +1952,7 @@
         <circle class="dot" id="dot5-12-2" cx="1244.4999" cy="414.50003" r="10"/>
         <circle class="dot" id="dot5-9-2" cx="1416.4999" cy="416.50003" r="10"/>
       </svg>
-      <svg v-if="show5a" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="583.00031" height="563.92383" viewBox="0 0 583.00031 563.92383">
+      <svg v-if="showState['5a']" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="583.00031" height="563.92383" viewBox="0 0 583.00031 563.92383">
         <metadata id="metadata8">
 
         </metadata>
@@ -2034,7 +2036,7 @@
         <circle class="dot" id="dot5a-1-2" cx="494.26764" cy="271.88873" r="10"/>
         <circle class="dot" id="dot5a-1-3" cx="490.02499" cy="329.87149" r="10"/>
       </svg>
-      <svg v-if="show6" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="1966" height="635.07928" viewBox="0 0 1966 635.07928">
+      <svg v-if="showState['6']" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="1966" height="635.07928" viewBox="0 0 1966 635.07928">
         <metadata id="metadata8">
 
         </metadata>
@@ -2114,7 +2116,7 @@
         <circle class="dot" id="dot6-17" cx="174.95775" cy="231.83221" r="10"/>
         <circle class="dot" id="dot6-18" cx="132.53136" cy="192.94138" r="10"/>
       </svg>
-      <svg v-if="show6a" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="582.99982" height="563.92389" viewBox="0 0 582.99982 563.92389">
+      <svg v-if="showState['6a']" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="582.99982" height="563.92389" viewBox="0 0 582.99982 563.92389">
         <metadata id="metadata8">
 
         </metadata>
@@ -2195,7 +2197,7 @@
         <circle class="dot" id="dot6a-12" cx="179.60512" cy="497.45584" r="10"/>
         <circle class="dot" id="dot6a-13" cx="176.7767" cy="546.95331" r="10"/>
       </svg>
-      <svg v-if="show7a" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="584.00006" height="564.95074" viewBox="0 0 584.00006 564.95074">
+      <svg v-if="showState['7a']" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg2" width="584.00006" height="564.95074" viewBox="0 0 584.00006 564.95074">
         <metadata id="metadata8">
 
         </metadata>
@@ -2292,7 +2294,7 @@
         <circle class="dot" id="dot7a-14" cx="180.99989" cy="548.95074" r="10"/>
         <circle class="dot" id="dot7a-1" cx="569.49988" cy="203.95076" r="10"/>
       </svg>
-      <svg v-if="show8a" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg86" width="582.99988" height="563.92371" viewBox="0 0 582.99988 563.92371">
+      <svg v-if="showState['8a']" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg86" width="582.99988" height="563.92371" viewBox="0 0 582.99988 563.92371">
         <metadata id="metadata92">
 
         </metadata>
@@ -2382,7 +2384,7 @@
         <path id="here" v-if="move" d="m -16.12079,474.59105 a 29.432041,29.432041 0 0 0 -14.102291,14.29322 34.751085,34.751085 0 0 0 3.13688,36.1695 L 0,563.9237 27.05894,525.05377 a 33.632722,33.632722 0 0 0 6.6829,-20.32148 c 0,-23.89478 -24.54944,-41.8977 -49.86263,-30.14124 z M 0.46371,516.0523 A 12.301993,12.301993 0 1 1 12.73842,503.75031 12.301993,12.301993 0 0 1 0.46371,516.0523 Z" style="fill:#ffa500"/>
 
       </svg>
-      <svg v-if="show9a" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg10" width="584.00012" height="564.95074" viewBox="0 0 584.00012 564.95074">
+      <svg v-if="showState['9a']" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" id="svg10" width="584.00012" height="564.95074" viewBox="0 0 584.00012 564.95074">
         <metadata id="metadata16">
 
         </metadata>
@@ -2484,37 +2486,88 @@
 
 
 import KeyBoard from "@/components/other/KeyBoard";
+
+import PathFinder from './pathfinder.vue';
 export default {
 name: "navigation",
-  components: {KeyBoard},
+  components: {KeyBoard, PathFinder},
 
   data() {
   return {
+    homeDot: 'dot3-11-2',
+    destDot: '',
     value: '',
     move: false,
-    show0: false,
-    show1: false,
-    show2: false,
-    show2a: false,
-    show3: false,
-    show3a: false,
-    show4: false,
-    show4a: false,
-    show5: false,
-    show5a: false,
-    show6: false,
-    show6a: false,
-    show7a: false,
-    show8a: false,
-    show9a: false,
+    showState : {
+    "0": false,
+    "1": false,
+    "2": false,
+    "2a": false,
+    "3": false,
+    "3a": false,
+    "4": false,
+    "4a": false,
+    "5": false,
+    "5a": false,
+    "6": false,
+    "6a": false,
+    "7a": false,
+    "8a": false,
+    "9a": false},
+    cabFloorMatch : {
+    "1":  ["101", "102", "103", "104", "105", "106", "107", "108", "109", "110", "111", "112", "113", "121", "123", "124", "125", "134"],
+    "2":  ["201", "202", "203", "204", "205", "206", "207", "208", "209", "210", "211", "212", "213", "214", "220", "222", "223", "224"],
+    "2a": ["225", "226", "228", "232", "233", "234"],
+    "3":  ["301", "302", "303", "304", "305", "306", "307", "308", "309", "310", "311", "312", "313", "314", "315", "316", "321", "322", "323", "324", "325"],
+    "3a": ["326", "327", "328", "329", "330", "334", "335", "336", "337", "338"],
+    "4":  ["401", "402", "403", "404", "405", "406", "407", "408", "409", "410", "411", "412", "413", "414", "420", "421", "422", "423", "424"],
+    "4a": ["425", "426", "427", "428", "429", "433", "434", "435"],
+    "5":  ["501", "502", "503", "504", "505", "506", "408", "410", "412", "413"],
+    "5a": ["512", "513", "514", "515", "519", "520", "521", "522"],
+    "6":  ["501", "504", "506"],
+    "6a": ["606", "607", "608", "612", "613", "614"],
+    "7a": ["703", "704", "705", "706", "707", "708", "712", "713", "714"],
+    "8a": ["801", "802", "803", "807", "808", "809", "810"],
+    "9a": ["901", "902", "903", "904", "905", "909", "910", "911", "912"]}
+
   };
   },
-/*methods: {
-  move :function() {
+  methods: {
+  showSelect(id) {
+    for (var item in this.showState) {
+      if (item === id) {
+        continue;
+      }
+      this.showState[item]= false
+     
+    }
+    this.showState[id] = !this.showState[id]
+  },
+  roomNumValidate(room) {
+    
+    for (var floor in this.cabFloorMatch) {
+      
+      for (var cab in this.cabFloorMatch[floor]){
+        
+        if (room === this.cabFloorMatch[floor][cab] )
+        return ('cab' + floor +  room.slice(1))
+        
+      }
+      
+    }
+    this.value = ''
+    return (-1)
+  }
+  
+},
+watch: {
+  value: function () {
+    if (this.value.length===3)
+    this.destDot=this.roomNumValidate(this.value)
+    console.log(this.homeDot,this.destDot)
 
   }
-}*/
-
+}
 
 }
 </script>
@@ -2554,8 +2607,10 @@ svg{
   position: absolute;
   top: 0;
   left: 0;
-  height: 100%;
-  width: 100%;
+  height: 50%;
+  width: 50%;
+  margin-top: 100px;
+  margin-left: 150px;
 }
 
 .big{
