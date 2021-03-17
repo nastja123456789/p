@@ -1558,6 +1558,7 @@
           <text id="text32-8" class="cab-num" y="370.30713" x="373.65945" xml:space="preserve"><tspan y="370.30713" x="373.65945" id="tspan30-6">330</tspan></text>
         </g>
         <path d="m 461.9999,390.9238 h 49 v -146 h 72 v 178 c -84.3994,22.2916 -139.3819,71.111 -171,141 h -49 v -173 z" id="path44" class="void"/>
+        <DotTest> </DotTest>
         <circle class="dot" id="dot3a-12" cx="192.5" cy="535.42383" r="10"/>
         <circle class="dot" id="dot3a-11" cx="188.5" cy="480.92383" r="10"/>
         <circle class="dot" id="dot3a-10" cx="186.5" cy="423.42383" r="10"/>
@@ -2486,11 +2487,12 @@
 
 
 import KeyBoard from "@/components/other/KeyBoard";
+import DotTest from "./dottest.vue"
 
 import PathFinder from './pathfinder.vue';
 export default {
 name: "navigation",
-  components: {KeyBoard, PathFinder},
+  components: {KeyBoard, PathFinder, DotTest},
 
   data() {
   return {
